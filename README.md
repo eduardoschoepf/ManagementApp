@@ -6,6 +6,7 @@ Data Model
 4. Consultant registration tab: name of the consultant, start and end of contract, fee payable and receivable, payment terms (days after invoice) and IBAN of the consultant
 5. Working days tab: number of working days of the month and number of days worked by the consultant, with the possibility of changing these values and a column of value to be used (actual or planned).
 
+```
 const dashboard = {
   year: {
     revenue: {
@@ -95,3 +96,4 @@ const workingDaysTab = {
     // Other consultants with the same structure
   ]
 }
+```
