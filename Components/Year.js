@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyleSheet, View, Text} from 'react-native';
 
-class Dashboard extends React.Component {
+class Year extends React.Component {
     
     render() {
         return (
             <View style={styles.main_container}>
-                <Text>Dashboard</Text>
-            </View>   
+                <Text>Year</Text>
+            </View>
         )
     }
 }
@@ -20,4 +20,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Dashboard;
+export default Year;

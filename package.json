@@ -9,12 +9,14 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "expo": "^47.0.0",
+    "expo": "^47.0.13",
     "expo-status-bar": "~1.4.2",
     "react": "18.1.0",
     "react-native": "0.70.5",
+    "react-native-gesture-handler": "~2.8.0",
+    "react-native-paper": "^3.12.0",
     "react-navigation": "^4.4.4",
-    "react-navigation-stack": "^2.10.4",
+    "react-navigation-material-bottom-tabs": "^2.3.5",
     "yet": "^0.1.0"
   },
   "devDependencies": {

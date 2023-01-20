@@ -1,10 +1,10 @@
 import React from 'react'
-import Navigation from './Navigation/Navigation'
+import BottomTabNavigator from './Navigation/BottomTabNavigator'
 
 export default class App extends React.Component {
   render() {
     return (
-        <Navigation/>
+        <BottomTabNavigator/>
     )
   }
-};
+}
