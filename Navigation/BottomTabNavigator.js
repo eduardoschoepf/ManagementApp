@@ -1,83 +1,36 @@
-import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
-import { createAppContainer } from "react-navigation";
-import { FontAwesome, FontAwesome5, MaterialIcons, SimpleLineIcons, Foundation} from "@expo/vector-icons";
-import Dashboard from '../Components/Dashboard';
-import Month from '../Components/Month';
-import Year from '../Components/Year';
-import Contracts from '../Components/Contracts';
-import Scheduling from '../Components/Scheduling';
+import { NavigationContainer } from '@react-navigation/native';
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { FontAwesome, FontAwesome5, MaterialIcons, SimpleLineIcons, Foundation, MaterialCommunityIcons } from "@expo/vector-icons";
+import DashboardStackScreen from '../Stacks/DashboardStackScreen';
+import ActualsStackScreen from '../Stacks/ActualsStackScreen';
+import PlannedStackScreen from '../Stacks/PlannedStackScreen';
+import ProfilesStackScreen from '../Stacks/ProfilesStackScreen';
+import InputsStackScreen from '../Stacks/InputsStackScreen';
 
-
-const BottomTabNavigator = createMaterialBottomTabNavigator(
-    {
-        Dashboard: { 
-            screen: Dashboard,
-            navigationOptions: {
-                tabBarLabel: "Dashboard",
-                tabBarIcon: (tabInfo) => (
-                    <FontAwesome5 name="money-check-alt"
-                    size={tabInfo.focused ? 26 : 20}
-                    color={tabInfo.tintColor}
-                  />
-                ),
-              },
-        },
-        Month: { 
-            screen: Month,
-            navigationOptions: {
-                tabBarLabel: "Month",
-                tabBarIcon: (tabInfo) => (
-                    <FontAwesome name="list-alt"
-                    size={tabInfo.focused ? 26 : 20}
-                    color={tabInfo.tintColor}
-                  />
-                ),
-              },
-        },
-        Year: { 
-            screen: Year,
-            navigationOptions: {
-                tabBarLabel: "Year",
-                tabBarIcon: (tabInfo) => (
-                    <Foundation name="results-demographics"
-                    size={tabInfo.focused ? 26 : 20}
-                    color={tabInfo.tintColor}
-                  />
-                ),
-              },
-        },
-        Contracts: { 
-            screen: Contracts,
-            navigationOptions: {
-                tabBarLabel: "Contracts",
-                tabBarIcon: (tabInfo) => (
-                    <MaterialIcons name="app-registration"
-                    size={tabInfo.focused ? 26 : 20}
-                    color={tabInfo.tintColor}
-                  />
-                ),
-              },
-        },
-        Scheduling: { 
-            screen: Scheduling,
-            navigationOptions: {
-                tabBarLabel: "Scheduling",
-                tabBarIcon: (tabInfo) => (
-                    <SimpleLineIcons name="organization"
-                    size={tabInfo.focused ? 26 : 20}
-                    color={tabInfo.tintColor}
-                  />
-                ),
-              },
-         }
-    },
-    {
-        initialRouteName: 'Dashboard',
-        tabBarOptions: {
-            activeTintColor: 'tomato',
-            inactiveTintColor: 'gray',
-          },
-          barStyle: { backgroundColor: '#694fad' },
-    });
-
-export default createAppContainer(BottomTabNavigator);
+const Tab = createMaterialBottomTabNavigator();
+export default function Navigation() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator
+        initialRouteName="Dashboard"
+        activeColor="#f0edf6"
+        inactiveColor="#3e2465"
+        barStyle={{ backgroundColor: '#694fad' }}
+      >
+        <Tab.Screen 
+          name="Dashboard" 
+          component={DashboardStackScreen}
+          options={{
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="home" color={color} size={26} />
+            ),
+          }}
+          />
+        <Tab.Screen name="Actuals" component={ActualsStackScreen} />
+        <Tab.Screen name="Planned" component={PlannedStackScreen} />
+        <Tab.Screen name="Profiles" component={ProfilesStackScreen} />
+        <Tab.Screen name="Inputs" component={InputsStackScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
