@@ -9,7 +9,7 @@ class DashboardStackScreen extends Component {
     render() {
         return (
             <Stack.Navigator>
-                <Stack.Screen name="Dashboard" component={Dashboard} />
+                <Stack.Screen name="Home" component={Dashboard} />
             </Stack.Navigator>
         )
     }

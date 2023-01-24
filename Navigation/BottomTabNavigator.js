@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import { FontAwesome, FontAwesome5, MaterialIcons, SimpleLineIcons, Foundation, MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, FontAwesome, Foundation, MaterialIcons, SimpleLineIcons } from "@expo/vector-icons";
 import DashboardStackScreen from '../Stacks/DashboardStackScreen';
 import ActualsStackScreen from '../Stacks/ActualsStackScreen';
 import PlannedStackScreen from '../Stacks/PlannedStackScreen';
@@ -13,23 +13,55 @@ export default function Navigation() {
     <NavigationContainer>
       <Tab.Navigator
         initialRouteName="Dashboard"
-        activeColor="#f0edf6"
-        inactiveColor="#3e2465"
+        activeColor="#694fad"
+        inactiveColor="#694fad"
         barStyle={{ backgroundColor: '#694fad' }}
       >
         <Tab.Screen 
           name="Dashboard" 
           component={DashboardStackScreen}
           options={{
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="home" color={color} size={26} />
+            tabBarIcon: () => (
+              <MaterialCommunityIcons name={"home"} size={24} color={"#d5d5e0"}/>
             ),
           }}
           />
-        <Tab.Screen name="Actuals" component={ActualsStackScreen} />
-        <Tab.Screen name="Planned" component={PlannedStackScreen} />
-        <Tab.Screen name="Profiles" component={ProfilesStackScreen} />
-        <Tab.Screen name="Inputs" component={InputsStackScreen} />
+        <Tab.Screen 
+          name="Actuals" 
+          component={ActualsStackScreen} 
+          options={{
+            tabBarIcon: () => (
+              <FontAwesome name={"list-alt"} size={24} color={"#d5d5e0"}/>
+            ),
+          }}
+          />
+        <Tab.Screen 
+          name="Planned" 
+          component={PlannedStackScreen} 
+          options={{
+            tabBarIcon: () => (
+              <Foundation name={"results-demographics"} size={24} color={"#d5d5e0"}/>
+            ),
+          }}
+          />
+        <Tab.Screen 
+          name="Profiles" 
+          component={ProfilesStackScreen} 
+          options= {{
+            tabBarIcon: () => (
+                <MaterialIcons name={"app-registration"} size={24} color={"#d5d5e0"}/>
+            ),
+          }}
+          />
+        <Tab.Screen 
+          name="Inputs" 
+          component={InputsStackScreen} 
+          options= {{
+            tabBarIcon: () => (
+              <SimpleLineIcons name={"organization"} size={24} color={"#d5d5e0"}/>
+            ),
+          }}
+          />
       </Tab.Navigator>
     </NavigationContainer>
   );

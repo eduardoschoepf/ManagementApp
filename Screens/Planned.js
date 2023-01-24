@@ -6,7 +6,7 @@ class Planned extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Planned</Text>
+                <Text style={styles.innerText}>Planned</Text>
             </View>
         )
     }
@@ -16,7 +16,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: '#dbba4d'
+    },
+    innerText: {
+        color: '#f5f4f0'
     }
 })
 

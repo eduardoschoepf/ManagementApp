@@ -1,62 +1,79 @@
-import React from 'react';
-import { StyleSheet, View, FlatList, Alert, Text } from 'react-native';
-import { ListItem } from 'react-native-elements'
+import React, { Component } from 'react';
+import { FlatList, SectionList, View, Text } from 'react-native';
 
-class Inputs extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            data: [{
-                id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-                name: 'John Doe',
-                startDate: '01/01/2022',
-                endDate: '01/01/2023',
-                iban: 'PT50 000 0000 0001 2345 67'
-              },{
-                id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28co',
-                name: 'Dorn Tiup',
-                startDate: '01/01/2022',
-                endDate: '01/01/2023',
-                iban: 'PT50 000 0000 0001 2345 67'
-              }],
-            searchedText: "" // Initialisation de notre donnée searchedText dans le state
-        }
-    }
-    
-    render() {
-        return (
-            <View style={styles.container}>
-                <FlatList
-                    data={this.state.data}
-                    renderItem={renderItem}
-                />
-            </View>
-        )
-    }
-}
+import UserRow from '../Components/UserRow'
+import Data from '../Data/data'
 
-const getListViewItem = (item) => {  
-    Alert.alert(item.name);  
-}
+class Inputs extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: Data
+    };
+  }
 
-const renderItem = ({item}) => {
+  _renderItem = ({ item }) => (
+    <UserRow
+      name={item.name.last}
+      month={item.month}
+      businessDays={item.businessDays}
+      workedDays={item.workedDays} />
+  )
+
+  _renderSectionHeader = ({ section }) => (
+    <View>
+      <Text>{section.title}</Text>
+    </View>
+  );
+
+  _renderSeparator = () => <View style={{ height: 1, backgroundColor: 'grey', marginLeft: 80 }} />
+
+  _renderHeader = () => (
+    <View style={{ height: 40, backgroundColor: 'white', justifyContent: 'center' }}>
+      <Text style={{ textAlign: 'center', fontSize: 30 }}>2023</Text>
+    </View>
+  )
+
+  _renderEmpty = () => (
+    <View style={{ height: 40, alignItems: "center", justifyContent: "center" }}>
+      <Text>Aucun résultat</Text>
+    </View>
+  )
+
+  _renderSection = ({ section }) => (
+    <View style={{ padding: 8, backgroundColor: '#59036E' }}>
+      <Text style={{ color: 'white' }}>{section.title}</Text>
+    </View>
+  )
+
+  _flatList = () => (
+    <FlatList
+      data={this.state.data}
+      renderItem={this._renderItem}
+      keyExtractor={item => item.email}
+      ItemSeparatorComponent={this._renderSeparator}
+      ListHeaderComponent={this._renderHeader}
+      ListFooterComponent={this._renderFooter}
+      ListEmptyComponent={this._renderEmpty} />
+  )
+
+  render() {
     return (
-        <View style={styles.item}>
-            <Text>{`${item.name} - ${item.iban}`}</Text>
-        </View>       
+      <SectionList
+        data={this.state.data}
+        renderItem={this._renderItem}
+        keyExtractor={item => item.email}
+        ItemSeparatorComponent={this._renderSeparator}
+        sections={[
+          { title: 'John DOE', data: this.state.data },
+          { title: 'Johnson KARL', data: this.state.data },
+          { title: 'Asuncion GOMEZ', data: this.state.data },
+        ]}
+        renderSectionHeader={this._renderSection}
+        ListHeaderComponent={this._renderHeader}
+        ListEmptyComponent={this._renderEmpty} />
     );
+  }
 }
-
-const styles = StyleSheet.create({
-    container: {  
-        flex: 1,
-        marginTop: 50 
-    },  
-    item: {  
-        padding: 5,  
-        fontSize: 20,  
-        height: 40,
-    },  
-})
 
 export default Inputs;
