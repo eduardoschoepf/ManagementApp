@@ -1,91 +1,67 @@
 let consultants = [
+  {
+  name: { title: 'mr', first: 'karl', last: 'JOHNSON' },
+  email: 'karl.johnson@example.com',
+  months: [{
+      month: "janv",
+      businessDays: 21,
+      workedDays: 10
+    },
     {
-        name: { title: 'mr', first: 'karl', last: 'johnson' },
-        email: 'karl.johnson@example.com',
-        month: "Jan",
-        businessDays: 21,
-        workedDays: 5,
-        valueToUse: 'real'
-      },
-      {
-        name: { title: 'mr', first: 'karl', last: 'johnson' },
-        email: 'karl.johnson@example.com',
-        month: "Fev",
-        businessDays: 21,
-        workedDays: 5,
-        valueToUse: 'real'
-      },
-      {
-        name: { title: 'mr', first: 'karl', last: 'johnson' },
-        email: 'karl.johnson@example.com',
-        month: "Mar",
-        businessDays: 21,
-        workedDays: 5,
-        valueToUse: 'real'
-      },
-      {
-        name: { title: 'mr', first: 'karl', last: 'johnson' },
-        email: 'karl.johnson@example.com',
-        month: "Apr",
-        businessDays: 21,
-        workedDays: 5,
-        valueToUse: 'real'
-      },{
-        name: { title: 'mr', first: 'karl', last: 'johnson' },
-        email: 'karl.johnson@example.com',
-        month: "May",
-        businessDays: 21,
-        workedDays: 5,
-        valueToUse: 'real'
-      },{
-        name: { title: 'mr', first: 'karl', last: 'johnson' },
-        email: 'karl.johnson@example.com',
-        month: "Jun",
-        businessDays: 21,
-        workedDays: 5,
-        valueToUse: 'real'
-      },{
-        name: { title: 'mr', first: 'karl', last: 'johnson' },
-        email: 'karl.johnson@example.com',
-        month: "Jul",
-        businessDays: 21,
-        workedDays: 5,
-        valueToUse: 'real'
-      },{
-        name: { title: 'mr', first: 'karl', last: 'johnson' },
-        email: 'karl.johnson@example.com',
-        month: "Aug",
-        businessDays: 21,
-        workedDays: 5,
-        valueToUse: 'real'
-      },{
-        name: { title: 'mr', first: 'karl', last: 'johnson' },
-        email: 'karl.johnson@example.com',
-        month: "Sept",
-        businessDays: 21,
-        workedDays: 5,
-        valueToUse: 'real'
-      },{
-        name: { title: 'mr', first: 'karl', last: 'johnson' },
-        email: 'karl.johnson@example.com',
-        month: "Oct",
-        businessDays: 21,
-        workedDays: 5,
-        valueToUse: 'real'
-      },{
-        name: { title: 'mr', first: 'karl', last: 'johnson' },
-        email: 'karl.johnson@example.com',
-        month: "Nov",
-        businessDays: 21,
-        workedDays: 5,
-        valueToUse: 'real'
-      },{
-        name: { title: 'mr', first: 'karl', last: 'johnson' },
-        email: 'karl.johnson@example.com',
-        month: "Dec",
-        businessDays: 21,
-        workedDays: 5,
-        valueToUse: 'real'
-      }
-]
+      month: "fev",
+      businessDays: 21,
+      workedDays: null
+    },
+    {
+      month: "mar",
+      businessDays: 21,
+      workedDays: 5
+    },
+    {
+      month: "apr",
+      businessDays: 21,
+      workedDays: 5
+    },
+    {
+      month: "may",
+      businessDays: 21,
+      workedDays: 5
+    },
+    {
+      month: "jun",
+      businessDays: 21,
+      workedDays: 5
+    },
+    {
+      month: "jul",
+      businessDays: 21,
+      workedDays: 5
+    },
+    {
+      month: "aug",
+      businessDays: 21,
+      workedDays: 3
+    },
+    {
+      month: "sep",
+      businessDays: 21,
+      workedDays: 5
+    },
+    {
+      month: "oct",
+      businessDays: 21,
+      workedDays: null
+    },
+    {
+      month: "nov",
+      businessDays: 21,
+      workedDays: 5
+    },
+    {
+      month: "dec",
+      businessDays: 21,
+      workedDays: 5
+    }
+  ]
+}]
 export default consultants

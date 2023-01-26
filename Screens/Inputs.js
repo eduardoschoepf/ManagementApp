@@ -8,13 +8,13 @@ class Inputs extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: Data
+      data: Data,
+      formatedData: this._fromArrayToSectionData(Data)
     };
   }
 
   _renderItem = ({ item }) => (
     <UserRow
-      name={item.name.last}
       month={item.month}
       businessDays={item.businessDays}
       workedDays={item.workedDays} />
@@ -57,6 +57,13 @@ class Inputs extends Component {
       ListEmptyComponent={this._renderEmpty} />
   )
 
+  _fromArrayToSectionData(data) {
+    let formated = data.map((item) => {
+      return { title: `${item.name.first} ${item.name.last}`, data: item.months }
+    })
+    return formated
+  }
+
   render() {
     return (
       <SectionList
@@ -64,11 +71,7 @@ class Inputs extends Component {
         renderItem={this._renderItem}
         keyExtractor={item => item.email}
         ItemSeparatorComponent={this._renderSeparator}
-        sections={[
-          { title: 'John DOE', data: this.state.data },
-          { title: 'Johnson KARL', data: this.state.data },
-          { title: 'Asuncion GOMEZ', data: this.state.data },
-        ]}
+        sections={this.state.formatedData}
         renderSectionHeader={this._renderSection}
         ListHeaderComponent={this._renderHeader}
         ListEmptyComponent={this._renderEmpty} />
