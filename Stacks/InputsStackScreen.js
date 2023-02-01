@@ -9,7 +9,7 @@ class InputsStackScreen extends Component {
     render() {
         return (
             <Stack.Navigator>
-                <Stack.Screen name="Inputs" component={Inputs} />
+                <Stack.Screen name="Inputs Screen" component={Inputs} />
             </Stack.Navigator>
         )
     }

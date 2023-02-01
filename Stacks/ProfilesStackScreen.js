@@ -9,7 +9,7 @@ class ProfilesStackScreen extends Component {
     render() {
         return (
             <Stack.Navigator>
-                <Stack.Screen name="Profiles" component={Profiles} />
+                <Stack.Screen name="Profiles Screen" component={Profiles} />
             </Stack.Navigator>
         )
     }

@@ -9,7 +9,7 @@ class ActualsStackScreen extends Component {
     render() {
         return (
             <Stack.Navigator>
-                <Stack.Screen name="Actuals" component={Actuals} />
+                <Stack.Screen name="Actuals Screen" component={Actuals} />
             </Stack.Navigator>
         )
     }

@@ -3,7 +3,7 @@ let consultants = [
   name: { title: 'mr', first: 'karl', last: 'JOHNSON' },
   email: 'karl.johnson@example.com',
   months: [{
-      month: "janv",
+      month: "jan",
       businessDays: 21,
       workedDays: 10
     },

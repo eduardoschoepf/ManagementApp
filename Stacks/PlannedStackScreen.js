@@ -9,7 +9,7 @@ class PlannedStackScreen extends Component {
     render() {
         return (
             <Stack.Navigator>
-                <Stack.Screen name="Planned" component={Planned} />
+                <Stack.Screen name="Planned Screen" component={Planned} />
             </Stack.Navigator>
         )
     }

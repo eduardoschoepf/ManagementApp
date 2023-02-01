@@ -1,17 +1,35 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { FlatList, SectionList, View, Text } from 'react-native';
-
 import UserRow from '../Components/UserRow'
 import Data from '../Data/data'
+import { ref, child, get, set } from "firebase/database";
+import { app, analytics, db } from '../src/Firebase/config'
 
-class Inputs extends Component {
+class Inputs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: Data,
-      formatedData: this._fromArrayToSectionData(Data)
-    };
+      data: {},
+      formatedData: {}
+    }
+    this._setData();
   }
+
+  _setData = () => {
+    get(child(ref(db, "consultants/"), "karljohnsonexamplecom")).then((snapshot) => {
+      console.log(snapshot.val());
+      this.setState({ 
+        data : snapshot.val(),
+        formatedData : this._fromArrayToSectionData(snapshot.val())
+      })
+    });
+  }
+
+  _writeData(userId, email) {
+  set(ref(db, "consultants/" + userId), {
+    email: email
+  });
+}
 
   _renderItem = ({ item }) => (
     <UserRow
@@ -26,7 +44,7 @@ class Inputs extends Component {
     </View>
   );
 
-  _renderSeparator = () => <View style={{ height: 1, backgroundColor: 'grey', marginLeft: 80 }} />
+  _renderSeparator = () => <View style={{ height: 1, backgroundColor: 'grey', marginLeft: 80 }}/>
 
   _renderHeader = () => (
     <View style={{ height: 40, backgroundColor: 'white', justifyContent: 'center' }}>
@@ -46,22 +64,8 @@ class Inputs extends Component {
     </View>
   )
 
-  _flatList = () => (
-    <FlatList
-      data={this.state.data}
-      renderItem={this._renderItem}
-      keyExtractor={item => item.email}
-      ItemSeparatorComponent={this._renderSeparator}
-      ListHeaderComponent={this._renderHeader}
-      ListFooterComponent={this._renderFooter}
-      ListEmptyComponent={this._renderEmpty} />
-  )
-
-  _fromArrayToSectionData(data) {
-    let formated = data.map((item) => {
-      return { title: `${item.name.first} ${item.name.last}`, data: item.months }
-    })
-    return formated
+  _fromArrayToSectionData(item) {
+    return { title: `${item.name.first} ${item.name.last}`, data: item.months }
   }
 
   render() {
@@ -74,7 +78,7 @@ class Inputs extends Component {
         sections={this.state.formatedData}
         renderSectionHeader={this._renderSection}
         ListHeaderComponent={this._renderHeader}
-        ListEmptyComponent={this._renderEmpty} />
+        ListEmptyComponent={this._renderEmpty}/>
     );
   }
 }

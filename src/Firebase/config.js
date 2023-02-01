@@ -1,6 +1,7 @@
+import React from "react";
+import { getDatabase } from "firebase/database";
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from "firebase/analytics";
-import { getDatabase, ref, child, get } from "firebase/database";
 import ENV from "./constants"
 
 const config = {
@@ -19,16 +20,8 @@ const app = initializeApp(config);
 const analytics = getAnalytics(app);
 const db = getDatabase(app);
 
-// Test
-const dbRef = ref(db, 'consultants');
-const userId = "karljohnsonexamplecom";
-
-get(child(dbRef, userId)).then((snapshot) => {
-  if (snapshot.exists()) {
-    console.log(snapshot.val());
-  } else {
-    console.log("There is no data in this node");
-  }
-}).catch((error) => {
-  console.error(error);
-});
+export {
+  app,
+  analytics,
+  db
+}
