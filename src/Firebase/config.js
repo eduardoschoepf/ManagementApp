@@ -1,7 +1,6 @@
 import React from "react";
 import { getDatabase } from "firebase/database";
 import { initializeApp } from 'firebase/app';
-import { getAnalytics } from "firebase/analytics";
 import ENV from "./constants"
 
 const config = {
@@ -17,11 +16,6 @@ const config = {
 
 // Initialize Firebase
 const app = initializeApp(config);
-const analytics = getAnalytics(app);
 const db = getDatabase(app);
 
-export {
-  app,
-  analytics,
-  db
-}
+export {db}

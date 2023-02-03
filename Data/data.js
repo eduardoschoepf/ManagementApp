@@ -1,8 +1,8 @@
 let consultants = [
   {
-  name: { title: 'mr', first: 'karl', last: 'JOHNSON' },
-  email: 'karl.johnson@example.com',
-  months: [{
+    name: { title: 'mr', first: 'karl', last: 'JOHNSON' },
+    email: 'karl.johnson@example.com',
+    months: [{
       month: "jan",
       businessDays: 21,
       workedDays: 10
@@ -62,6 +62,7 @@ let consultants = [
       businessDays: 21,
       workedDays: 5
     }
-  ]
-}]
+    ]
+  }
+]
 export default consultants
