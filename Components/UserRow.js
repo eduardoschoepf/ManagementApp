@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import { Button } from 'react-native-paper';
 
 class UserRow extends React.Component {
 
@@ -14,6 +15,7 @@ class UserRow extends React.Component {
         <Text style={styles.secondaryText}>{this.props.businessDays}</Text>
         <Text style={styles.secondaryText}>{this.props.workedDays != null ? this.props.workedDays : ""}</Text>
         <Text style={styles.secondaryText}>{this.props.workedDays != null ? this.props.workedDays : this.props.businessDays}</Text>
+        <Button onPress={() => this.props.getItem(this.props.item)}>Press</Button>
       </View>
     )
   }

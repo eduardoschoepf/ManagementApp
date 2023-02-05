@@ -12,7 +12,7 @@ class Inputs extends React.Component {
         }
     }
 
-    _getData() {
+    _getData = () => {
         get(child(ref(db, "consultants/"), "0")).then((snapshot) => {
             this.setState({
                 data: snapshot.val()
@@ -20,15 +20,21 @@ class Inputs extends React.Component {
         });
     }
 
-    _setData(userId) {
-        set(ref(db, "consultants/" + userId), Data);
+    _setData = () => {
+        set(ref(db, "consultants/0"), this.state.data);
+    }
+
+    _getItem = (item) => {
+        alert(`Month : ${item.month}\nBusiness days : ${item.businessDays}\nWorked days : ${item.workedDays}`);
     }
 
     _renderItem = ({ item }) => (
         <UserRow
             month={item.month}
             businessDays={item.businessDays}
-            workedDays={item.workedDays} />
+            workedDays={item.workedDays}
+            item={item} 
+            getItem={this._getItem}/>
     )
 
     _renderSeparator = () => <View style={{ height: 1, backgroundColor: 'grey', marginLeft: 80 }} />
@@ -64,7 +70,7 @@ class Inputs extends React.Component {
             <FlatList
                 data={this.state.data.months}
                 renderItem={this._renderItem}
-                keyExtractor={item => item.email}
+                keyExtractor={item => item.month}
                 ItemSeparatorComponent={this._renderSeparator}
                 ListHeaderComponent={this._renderHeader}
                 ListEmptyComponent={this._renderEmpty} />
