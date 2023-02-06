@@ -8,7 +8,7 @@ class Inputs extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: {}
+            data: {},
         }
     }
 
@@ -20,8 +20,54 @@ class Inputs extends React.Component {
         });
     }
 
-    _setData = () => {
-        set(ref(db, "consultants/0"), this.state.data);
+    _getAddress = (month) => {
+        let address = "consultants/0/months/"
+        switch (month) {
+            case "jan":
+                return address + "0/";
+                break;
+            case "fev":
+                return address + "1/";
+                break;
+            case "mar":
+                return address + "2/";
+                break;
+            case "apr":
+                return address + "3/";
+                break;
+            case "may":
+                return address + "4/";
+                break;
+            case "jun":
+                return address + "5/";
+                break;
+            case "jul":
+                return address + "6/";
+                break;
+            case "aug":
+                return address + "7/";
+                break;
+            case "sep":
+                return address + "8/";
+                break;
+            case "oct":
+                return address + "9/";
+                break;
+            case "nov":
+                return address + "10/";
+                break;
+            case "dec":
+                return address + "11/";
+                break;
+            default:
+                return null;
+                break;
+        }
+    }
+
+    _setData = (item) => {
+        set(ref(db, this._getAddress(item.month)), item);
+        this._getData();
     }
 
     _getItem = (item) => {
@@ -30,16 +76,13 @@ class Inputs extends React.Component {
 
     _renderItem = ({ item }) => (
         <UserRow
-            month={item.month}
-            businessDays={item.businessDays}
-            workedDays={item.workedDays}
-            item={item} 
-            getItem={this._getItem}/>
+            item={item}
+            setData={this._setData} />
     )
 
     _renderSeparator = () => <View style={{ height: 1, backgroundColor: 'grey', marginLeft: 80 }} />
 
-    _renderHeader = () => (   
+    _renderHeader = () => (
         <View style={{ height: 60, backgroundColor: 'white', justifyContent: 'center' }}>
             <Text style={{ textAlign: 'center', fontSize: 26 }}>2023</Text>
             <Text style={{ textAlign: 'center', fontSize: 20 }}>{this.state.data.email}</Text>
@@ -70,7 +113,7 @@ class Inputs extends React.Component {
             <FlatList
                 data={this.state.data.months}
                 renderItem={this._renderItem}
-                keyExtractor={item => item.month}
+                keyExtractor={(item) => item.month}
                 ItemSeparatorComponent={this._renderSeparator}
                 ListHeaderComponent={this._renderHeader}
                 ListEmptyComponent={this._renderEmpty} />
