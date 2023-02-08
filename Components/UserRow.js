@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, View, Text, StyleSheet } from 'react-native';
-import EditingWindow from './EditingWindow'
+import { View, Text, StyleSheet } from 'react-native';
+import { Button } from 'react-native-paper';
+import EditingWindow from './EditItem'
 
 class UserRow extends React.Component {
 
@@ -28,7 +29,7 @@ class UserRow extends React.Component {
         <Text style={styles.secondaryText}>{this.props.item.businessDays}</Text>
         <Text style={styles.secondaryText}>{this.props.item.workedDays != 0 ? this.props.item.workedDays : ""}</Text>
         <Text style={styles.secondaryText}>{this.props.item.workedDays != 0 ? this.props.item.workedDays : this.props.item.businessDays}</Text>
-        <Button title="Edit" onPress={() => this._updateModal(true)} />
+        <Button icon="" mode="contained" onPress={() => this._updateModal(true)}>Edit</Button>
         <EditingWindow
           item={this.props.item}
           setData={this.props.setData}
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 12
+    padding: 12,
   },
   primaryText: {
     fontWeight: 'bold',

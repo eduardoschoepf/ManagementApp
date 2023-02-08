@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View, Text, StyleSheet } from 'react-native';
 import UserRow from '../Components/UserRow'
 import { ref, child, get, set } from "firebase/database";
 import { db } from '../src/Firebase/config'
@@ -70,40 +70,42 @@ class Inputs extends React.Component {
         this._getData();
     }
 
-    _getItem = (item) => {
-        alert(`Month : ${item.month}\nBusiness days : ${item.businessDays}\nWorked days : ${item.workedDays}`);
-    }
-
     _renderItem = ({ item }) => (
         <UserRow
             item={item}
             setData={this._setData} />
     )
 
-    _renderSeparator = () => <View style={{ height: 1, backgroundColor: 'grey', marginLeft: 80 }} />
+    _renderSeparator = () => <View style={{ height: 1, backgroundColor: 'grey', marginLeft: 60 }} />
 
     _renderHeader = () => (
-        <View style={{ height: 60, backgroundColor: 'white', justifyContent: 'center' }}>
-            <Text style={{ textAlign: 'center', fontSize: 26 }}>2023</Text>
-            <Text style={{ textAlign: 'center', fontSize: 20 }}>{this.state.data.email}</Text>
+        <View style={{ backgroundColor: 'white', justifyContent: 'center' }}>
+            <View style={{ flexDirection: 'row', }}>
+                <View style={{ flex: 4, padding: 10 }}>
+                    <Text style={{}}>Identification:</Text>
+                    <Text style={{ fontSize: 20 }}>{this.state.data.email}</Text>
+                </View>
+                <View style={{ flex: 1, padding: 10 }}>
+                    <Text style={{}}> Year: </Text>
+                    <Text style={{ fontSize: 26 }}>2023</Text>
+                </View>
+            </View>
+
+            <Text style={{ height: 1, backgroundColor: 'grey' }} />
+            <View style={styles.row}>
+                <Text style={{ flex: 3 }}>Month</Text>
+                <Text style={{ flex: 2 }}>Days</Text>
+                <Text style={{ flex: 2 }}>Real</Text>
+                <Text style={{ flex: 2 }}>Worked</Text>
+                <Text style={{ flex: 2 }}></Text>
+            </View>
+            <Text style={{ height: 1, backgroundColor: 'grey' }} />
         </View>
     )
 
     _renderEmpty = () => (
         <View style={{ height: 40, alignItems: "center", justifyContent: "center" }}>
             <Text>Aucun résultat</Text>
-        </View>
-    )
-
-    _renderSectionHeader = ({ section }) => (
-        <View>
-            <Text>{section.title}</Text>
-        </View>
-    );
-
-    _renderSection = ({ section }) => (
-        <View style={{ padding: 8, backgroundColor: '#59036E' }}>
-            <Text style={{ color: 'white' }}>{section.title}</Text>
         </View>
     )
 
@@ -120,5 +122,13 @@ class Inputs extends React.Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    row: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 12
+    },
+})
 
 export default Inputs;
