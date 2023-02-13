@@ -7,19 +7,13 @@ class UserRow extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
-      modal: false,
-      newItem: {
-        month: this.props.item.month,
-        businessDays: this.props.item.businessDays,
-        workedDays: this.props.item.workedDays
-      }
+      modal: false
     }
   }
 
-  _updateModal = (val) => {
-    this.setState({ modal: val })
+  updateModal = () => {
+    this.setState({ modal: !this.state.modal })
   }
 
   render() {
@@ -29,12 +23,12 @@ class UserRow extends React.Component {
         <Text style={styles.secondaryText}>{this.props.item.businessDays}</Text>
         <Text style={styles.secondaryText}>{this.props.item.workedDays != 0 ? this.props.item.workedDays : ""}</Text>
         <Text style={styles.secondaryText}>{this.props.item.workedDays != 0 ? this.props.item.workedDays : this.props.item.businessDays}</Text>
-        <Button icon="" mode="contained" onPress={() => this._updateModal(true)}>Edit</Button>
+        <Button icon="" mode="contained" onPress={() => this.updateModal()}>Edit</Button>
         <EditingWindow
           item={this.props.item}
           setData={this.props.setData}
           modal={this.state.modal}
-          updateModal={this._updateModal} />
+          updateModal={this.updateModal} />
       </View>
     )
   }
