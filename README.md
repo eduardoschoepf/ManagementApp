@@ -1,99 +1,23 @@
-Data Model
+# Gestão de Pagamentos de Consultores
 
-1. Dashboard: inflows and outflows of the year, balance per month (actual and planned)
-2. Current month tab: consultant name and amount to be paid for the month
-3. Year tab: consultant name, Portugal working days, amount to be paid per month (considering working days)
-4. Consultant registration tab: name of the consultant, start and end of contract, fee payable and receivable, payment terms (days after invoice) and IBAN of the consultant
-5. Working days tab: number of working days of the month and number of days worked by the consultant, with the possibility of changing these values and a column of value to be used (actual or planned).
+## Descrição
 
-```
-const dashboard = {
-  year: {
-    revenue: {
-      real: 1000,
-      planned: 2000
-    },
-    expenses: {
-      real: 500,
-      planned: 1000
-    },
-    balance: {
-      real: 500,
-      planned: 1000
-    },
-    month: {
-      january: {
-        revenue: {
-          real: 100,
-          planned: 200
-        },
-        expenses: {
-          real: 50,
-          planned: 100
-        },
-        balance: {
-          real: 50,
-          planned: 100
-        }
-      },
-      // Other months with the same structure
-    }
-  }
-}
+Este projeto visa facilitar a gestão de pagamentos de consultores contratados por uma empresa X para auxiliar na implementação de um sistema. O projeto estabelece um processo eficiente e transparente para calcular os pagamentos com base nas condições acordadas e nas atividades registradas pelos consultores.
 
-const currentMonthTab = {
-  consultants: [
-    {
-      name: 'John Doe',
-      payment: 500
-    },
-    // Other consultants with the same structure
-  ]
-}
+## Funcionalidades Principais
 
-const yearTab = {
-  consultants: [
-    {
-      name: 'John Doe',
-      businessDays: 21,
-      payment: {
-        january: 250,
-        // Other months with the same structure
-      }
-    },
-    // Other consultants with the same structure
-  ]
-}
+- Cadastro de consultores e seus contratos.
+- Registro de dias de trabalho e atividades realizadas.
+- Cálculo automático de pagamentos com base nas taxas acordadas e nos dias registrados.
+- Geração de relatórios detalhados de atividades e cálculos de pagamento.
+- Sistema de notificação para datas de início e término de contratos.
 
-const consultantsTab = {
-  consultants: [
-    {
-      name: 'John Doe',
-      startDate: '01/01/2022',
-      endDate: '01/01/2023',
-      rate: {
-        toPay: 50,
-        toReceive: 100
-      },
-      paymentTerms: [0, 30, 60, 90],
-      iban: 'PT50 000 0000 0001 2345 67'
-    },
-    // Other consultants with the same structure
-  ]
-}
+## Escolhas Técnicas
 
-const workingDaysTab = {
-  consultants: [
-    {
-      name: 'John Doe',
-      january: {
-        businessDays: 21,
-        workedDays: 5,
-        valueToUse: 'real'
-      },
-    // Other months with the same structure
-    }
-    // Other consultants with the same structure
-  ]
-}
-```
+- **Plataforma:** O aplicativo será desenvolvido em React Native para garantir a compatibilidade com iOS e Android.
+- **Banco de Dados:** Utilizaremos o Firebase como banco de dados para gerenciar os dados dos consultores, contratos, atividades e pagamentos.
+- **Autenticação:** O Firebase também será usado para autenticação, garantindo o acesso seguro aos dados.
+- **Notificações:** Implementaremos um sistema de notificações baseado em Firebase para alertar sobre datas importantes, como o término dos contratos.
+- **Interface de Usuário:** A interface será projetada com foco na usabilidade e na experiência do usuário, garantindo a facilidade de registro de atividades e visualização de informações relevantes.
+
+---
